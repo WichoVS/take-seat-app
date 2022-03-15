@@ -24,4 +24,4 @@ El proyecto fue arrancado con Create React App junto con algunas modificaciónes
 
 El repositorio del Back end del proyecto se encuentra en:
 
-TakeSeatAPI (https://github.com/WichoVS/TakeSeatAPI)
+[TakeSeatAPI](https://github.com/WichoVS/TakeSeatAPI)
