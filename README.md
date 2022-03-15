@@ -4,11 +4,11 @@ Take Seat, proyecto para Programación Web 2. En este repositorio se encuentra e
 
 ## Participantes
 
-Briam Alan Gonzalez Flores
-Gina Miranda Olvera
-Luis Angel Villanueva Sánchez
+**Briam Alan Gonzalez Flores. ()**
+**Gina Miranda Olvera. (https://github.com/ginamiranda)**
+**Luis Angel Villanueva Sánchez. (https://github.com/WichoVS)**
 
-### `npm start`
+## `npm start`
 
 Para iniciar el Proyecto es necesario usar npm start en la terminal localizandonos en la carpeta raíz del proyecto.
 
@@ -24,4 +24,4 @@ El proyecto fue arrancado con Create React App junto con algunas modificaciónes
 
 El repositorio del Back end del proyecto se encuentra en:
 
-https://github.com/WichoVS/TakeSeatAPI
+TakeSeatAPI (https://github.com/WichoVS/TakeSeatAPI)
