@@ -4,8 +4,8 @@ Take Seat, proyecto para Programación Web 2. En este repositorio se encuentra e
 
 ## Participantes
 
-**Briam Alan Gonzalez Flores. ()**
-**Gina Miranda Olvera. (https://github.com/ginamiranda)**
+**Briam Alan Gonzalez Flores. ()** <br />
+**Gina Miranda Olvera. (https://github.com/ginamiranda)** <br />
 **Luis Angel Villanueva Sánchez. (https://github.com/WichoVS)**
 
 ## `npm start`
