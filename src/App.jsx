@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Inicio from './Pages/Inicio';
 import Ayuda from './Pages/Ayuda';
 import Administracion from './Pages/Administracion';
@@ -27,6 +27,7 @@ export default function App() {
         <Route exact path="/Perfil" element={<Perfil />} />
         <Route exact path="/Registro" element={<Registro />} />
         <Route exact path="/Restaurante" element={<Restaurante />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
