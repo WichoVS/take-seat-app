@@ -14,8 +14,6 @@ import recipie3 from '../../Assets/Styles/Global/img/recipie/3.jpg';
 import recipie4 from '../../Assets/Styles/Global/img/recipie/4.jpg';
 import recipie5 from '../../Assets/Styles/Global/img/recipie/5.jpg';
 
-//  import bg3 from '../../Assets/Styles/Global/img/bg3.png';
-
 function Inicio() {
   return (
     <div className="body">
