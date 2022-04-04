@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Take Seat</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="css/plugin.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+    <div class="body">
+
+        <div class="main-wrapper">
+            <!-- Navegacion-->
+            <nav class="navbar navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="./index.html">
+                            <img src="img/nav-logo.png" alt="nav-logo">
+                        </a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="INICIO.html">Inicio</a>
+                            </li>
+                           <li class="nav-item active">
+                                <a class="nav-link" href="HISTORIAL_RESERVACIONES.html">Reservación</a>
+                            </li>
+                            </li>
+                             <li class="nav-item active">
+                                <a class="nav-link" href="INICIO.html">Ayuda</a>
+                            </li>
+                           <li class="nav-item active">
+                                <a href="#" data-toggle="modal" data-target="#loginModal">Iniciar Sesión</a>
+                            </li>
+                            <li class="nav-item active">
+                                 <a class="nav-link" href="EDITAR_CUENTA.html">Mi Cuenta</a>
+                             </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Page Header -->
+            <section class="page_header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="text-uppercase">PAGO</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Checkout Form -->
+            <section class="shop-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <br>
+                            <h4 class="text-left">Tu Reservación</h4>
+                            <br>
+                            <table class="table table-bordered extra-padding">
+                                <tbody>
+                                    <tr>
+                                        <th>Subtotal</th>
+                                        <td><span class="amount">$225</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>IVA</th>
+                                        <td>
+                                            $0
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total</th>
+                                        <td><strong><span class="amount">$225</span></strong> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                            <h4 class="text-left">Método de Pago</h4>
+                            <br>
+                            <div class="payment-method">
+                                <div class="row">
+                                    <form>
+                                        <div class="col-md-4">
+                                            <label>
+                                                <input name="payment" id="radio1" class="css-checkbox" type="radio"><span>Transferencia Interbancaria</span></label>
+                                            <div class="space20"></div>
+                                            <p>Realice el pago directamente en nuestra cuenta bancaria y use su ID de pedido como referencia. </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                <input name="payment" id="radio3" class="css-checkbox" type="radio"><span>Paypal</span></label>
+                                            <div class="space20"></div>
+                                            <p>Pagar a través de PayPal; puede pagar con su tarjeta de crédito si no tiene una cuenta de PayPal</p>
+                                        </div>
+                                    </form>
+                                </div>
+                                <br>
+                                <form class="text-center">
+                                    <input name="checkboxG2" id="checkboxG2" class="css-checkbox" type="checkbox"><span>Acepto los Términos y Condiciones</span>
+                                </form>
+
+                                <div class="text-center top-space-lg"><a href="./RESERVACION_HECHA.html" class="btn btn-default btn-lg">Pagar</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer-->
+            <section class="footer">
+                <div class="footer-copyrights">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p><i class="fa fa-copyright"></i> Take seat<i class="fa fa-heart primary-color"></i> by Programación Web 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div> 
+
+                <!-- Login  -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="title-section">
+                <h1>Iniciar Sesión</h1>
+            </div>
+            <form id="login-form">
+                <p>Inicia sesión en tu cuenta</p>
+                <label for="username">Usuario</label>
+                <input id="username" name="username" type="text">
+                <label for="password">Contraseña</label>
+                <input id="password" name="password" type="password">
+                <button type="submit" id="submit-register">
+                    <i class="fa fa-paper-plane"></i> Iniciar
+                </button>
+            </form>
+            <p>¿No tienes cuenta? <a href="REGISTRO.html">Regístrate aquí!</a></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- fin login -->
+
+    <!-- Javascript -->
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/jquery.flexslider-min.js"></script>
+    <script src="js/vendor/spectragram.js"></script>
+    <script src="js/vendor/owl.carousel.min.js"></script>
+    <script src="js/vendor/velocity.min.js"></script>
+    <script src="js/vendor/velocity.ui.min.js"></script>
+    <script src="js/vendor/bootstrap-datepicker.min.js"></script>
+    <script src="js/vendor/bootstrap-clockpicker.min.js"></script>
+    <script src="js/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="js/vendor/isotope.pkgd.min.js"></script>
+    <script src="js/vendor/slick.min.js"></script>
+    <script src="js/vendor/wow.min.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/vendor/vegas/vegas.min.js"></script>
+    <script src="js/vendor/jquery.mb.YTPlayer.js"></script>
+    <script src="js/vendor/jquery.stellar.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
+    <script src="js/vendor/mc/main.js"></script>
+
+</body>
+
+</html>
