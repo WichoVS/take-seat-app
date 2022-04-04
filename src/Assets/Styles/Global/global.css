@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  color: #4b4741;
+  text-align: center;
+  font-weight: 800;
+}
+
+.main-wrapper {
+  position: relative;
+  background: #fff;
+}
+
+.home {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url(../Global/img/bg2.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.home .tittle-block {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+.home .tittle-block .logo {
+  text-align: center;
+}
+
+.home .tittle-block h1 {
+  color: #ffffff;
+  font-size: 72px;
+}
+
+.home .tittle-block h2 {
+  text-transform: none;
+  font-weight: 400;
+  color: #e6e6e6;
+  font-size: 36px;
+}
+
+.home .scroll-down {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bar-under-text {
+  width: 117px;
+  height: 3px;
+  background-color: #f9c56a;
+  height: 3px !important;
+  opacity: 1;
+}
+
+
+.special {
+  background: url(../Global/img/bg3.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-bottom: 80px;
+  padding-top: 80px;
+}
+
+.btn {
+  border-radius: 0px;
+  border: none;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 10px 15px;
+}
+
+.btn-default {
+  background-color: #f9c56a;
+}
+
+.btn-default:hover {
+  background-color: #f7b239;
+  border-color: #f7b239;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.material-icons.md-64 {
+  font-size: 64px;
+}
+
+.material-icons.fw-100 {
+  font-weight: 100;
+}
+
+.material-icons.fw-200 {
+  font-weight: 200;
+}
+
+.material-icons.fw-300 {
+  font-weight: 300;
+}
+
+.material-icons.fw-500 {
+  font-weight: 500;
+}
+
+.material-icons.fw-800 {
+  font-weight: 800;
+}
+
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.star-active {
+  color: #F6B61C;
+}
+
+.star-inactive {
+  color: #CDCDCD;
+}

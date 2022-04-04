@@ -1,0 +1,82 @@
+.h1-carousel {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  text-align: left;
+  text-transform: none;
+  font-weight: 700;
+  color: #4b4741;
+}
+
+.h1-carousel small {
+  font-size: 22px;
+  text-align: left;
+  line-height: 1.2em;
+  color: #aaa;
+  font-weight: 400;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.p-carousel {
+  font-family: "Josefin Sans", sans-serif;
+  color: #828281;
+  font-size: 21px;
+  margin-bottom: 0px;
+}
+
+.card-carousel {
+  border-radius: 0px;
+  width: 945px;
+  border: none;
+  height: 382px;
+}
+
+.recipie-content {
+  padding: 85px 0;
+}
+
+.restaurant-card {
+  padding: 0px 20px;
+}
+
+.recipie-content img {
+  width: 100%;
+  float: none;
+  margin-bottom: 20px;
+}
+
+.rc-info-div {
+  text-align: start;
+  width: 100%;
+}
+
+.rc-info-h4 {
+  text-align: start;
+}
+
+.pagina-circle {
+  float: left;
+  margin-right: 9px;
+  cursor: pointer;
+  font-family: Josefin Sans;
+  list-style: none;
+}
+
+
+.pagina-a {
+  width: 46px;
+  height: 46px;
+  background: #EFEFEF;
+  border-radius: 50%;
+  line-height: 46px;
+  text-align: center;
+  font-size: 18px;
+  color: #0a0a0a;
+  display: table;
+  font-family: Arial, helvetica, Sans-serif;
+  text-decoration: none;
+  margin-top: 40px;
+}
+
+.pagina-a-active {
+  background: #f9c56a !important;
+}
