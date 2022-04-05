@@ -1,0 +1,93 @@
+.page_header {
+  background: url(./Global/img/header/1.jpg) no-repeat center top;
+  background-size: cover;
+  padding: 200px 0 150px;
+}
+
+.page_header h2 {
+  margin: 0;
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.space60 {
+  margin-bottom: 60px;
+}
+
+.menu {
+  padding-bottom: 30px;
+}
+
+.menu-tags {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.menu-tags .tagsort-active {
+  border-bottom: 3px solid #f9c56a;
+  color: #4b4741;
+}
+
+.menu-tags span {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  color: #828281;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0px 20px;
+  padding-bottom: 2px;
+  padding-top: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border-bottom: 3px solid transparent;
+}
+
+
+.menu .food-menu .menu-item, .menu .food-menu .menu-item3 {
+  overflow: hidden;
+  margin: 15px 0px;
+  padding-left: 10px;
+  border-left: 3px solid white;
+}
+
+.menu .food-menu .menu-item .menu-wrapper, .menu .food-menu .menu-item3 .menu-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.menu .food-menu .menu-item .dotted-bg, .menu .food-menu .menu-item3 .dotted-bg {
+  border-top: dotted 2px #ccc;
+  position: absolute;
+  left: 0px;
+  top: 15px;
+  width: 100%;
+  z-index: -1;
+}
+
+.menu .food-menu .menu-item .price, .menu .food-menu .menu-item3 .price {
+  float: right;
+  padding-left: 10px;
+  line-height: 19.8px;
+  margin: 5px 0px;
+  background: #FFF none repeat scroll 0% 0%;
+  font-family: Josefin Sans;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.menu .food-menu .menu-item h4, .menu .food-menu .menu-item3 h4 {
+  text-align: left;
+  margin: 5px 0px;
+  float: left;
+  padding-right: 10px;
+  display: inline;
+  background: #fff;
+  font-size: medium;
+}
+
+.menu .food-menu .menu-item p, .menu .food-menu .menu-item3 p {
+  font-size: 18px;
+}
