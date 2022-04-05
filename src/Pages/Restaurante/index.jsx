@@ -60,7 +60,7 @@ export default function Restaurante() {
 
         <section className="features">
           <div className="row col-md-12  justify-content-center">
-            <div className="container col-md-9">
+            <div className="container d-flex flex-column align-items-center col-md-9">
               <div className="row">
                 <div className="mt-4 pt-4">
                   <div className="page-header wow fadeInDown center-text">
