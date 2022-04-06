@@ -10,6 +10,7 @@ import thumb7 from '../../Assets/Styles/Global/img/thumb7.png';
 import avatar1 from '../../Assets/Styles/Global/img/xtra/1.jpg';
 import avatar2 from '../../Assets/Styles/Global/img/xtra/2.jpg';
 import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 
 export default function Restaurante() {
   return (
@@ -238,6 +239,8 @@ export default function Restaurante() {
           </div>
         </div>
       </div>
+
+      <FooterBarra />
     </>
   );
 }
