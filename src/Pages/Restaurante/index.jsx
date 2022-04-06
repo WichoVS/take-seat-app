@@ -9,10 +9,12 @@ import thumb6 from '../../Assets/Styles/Global/img/thumb6.png';
 import thumb7 from '../../Assets/Styles/Global/img/thumb7.png';
 import avatar1 from '../../Assets/Styles/Global/img/xtra/1.jpg';
 import avatar2 from '../../Assets/Styles/Global/img/xtra/2.jpg';
+import NavBarra from '../../Layouts/Header/NavBar';
 
 export default function Restaurante() {
   return (
-    <body>
+    <>
+      <NavBarra />
       <section className="home">
         <div className="tittle-block">
           <div className="logo">
@@ -236,6 +238,6 @@ export default function Restaurante() {
           </div>
         </div>
       </div>
-    </body>
+    </>
   );
 }
