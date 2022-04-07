@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/menuRestaurant.css';
 
 export default function Menu() {
