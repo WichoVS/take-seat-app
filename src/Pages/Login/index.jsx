@@ -1,9 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {} from 'reactstrap';
 import '../../Assets/Styles/Global/inicio.css';
+import { IniciarSesion } from '../../Services/Usuarios/usuarios';
 
 export default function Login() {
+  const [correo, setCorreo] = useState('');
+  const [pass, setPass] = useState('');
+  const navigate = useNavigate();
+
   return (
     <div className="body">
       <div className="main-wrapper">
@@ -32,7 +38,14 @@ export default function Login() {
                           <div className="form-group">
                             <div className="col-md-12">
                               <label htmlFor="emailLogin">Correo Electrónico</label>
-                              <input id="emailLogin" type="text" className="form-control" />
+                              <input
+                                onChange={(e) => {
+                                  setCorreo(e.target.value);
+                                }}
+                                id="emailLogin"
+                                type="text"
+                                className="form-control"
+                              />
                             </div>
                           </div>
                         </div>
@@ -41,14 +54,29 @@ export default function Login() {
                           <div className="form-group">
                             <div className="col-md-12">
                               <label htmlFor="passwLogin">Contraseña</label>
-                              <input id="passwLogin" type="password" className="form-control" />
+                              <input
+                                onChange={(e) => {
+                                  setPass(e.target.value);
+                                }}
+                                id="passwLogin"
+                                type="password"
+                                className="form-control"
+                              />
                             </div>
                           </div>
                         </div>
                         <div className="clearfix" />
                         <div className="row">
                           <div className="col-md-12">
-                            <button type="submit" className="btn btn-default pull-right">
+                            <button
+                              onClick={() => {
+                                if (IniciarSesion(correo, pass)) {
+                                  navigate('/');
+                                }
+                              }}
+                              type="button"
+                              className="btn btn-default pull-right"
+                            >
                               Entrar
                             </button>
                           </div>

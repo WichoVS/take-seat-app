@@ -30,9 +30,9 @@ export default function Header() {
               </Link>
             </li>
             <li className="nav-item active">
-              <button type="button" className="login-button">
+              <Link to="/Login" className="nav-link">
                 Iniciar Sesión
-              </button>
+              </Link>
             </li>
             <li className="nav-item active">
               <Link className="nav-link" to="/Perfil">
