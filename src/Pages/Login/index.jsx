@@ -2,10 +2,9 @@
 import React from 'react';
 import {} from 'reactstrap';
 import '../../Assets/Styles/Global/global.css';
-import '../../Assets/Styles/Global/inicio.css';
-import '../../Assets/Styles/Global/login.css';
-import '../../Assets/Pantallas/HTML/css/plugin.css';
-import '../../Assets/Pantallas/HTML/css/bootstrap.min.css';
+// import '../../Assets/Styles/Global/inicio.css';
+// import '../../Assets/Styles/Global/login.css';
+// import '../../Assets/Pantallas/HTML/css/plugin.css';
 
 export default function Login() {
   return (

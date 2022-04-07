@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import {} from 'reactstrap';
-import '../../Assets/Styles/Global/profile.css';
-import '../../Assets/Pantallas/HTML/css/plugin.css';
-import '../../Assets/Pantallas/HTML/css/bootstrap.min.css';
+// import '../../Assets/Styles/Global/profile.css';
+// import '../../Assets/Pantallas/HTML/css/plugin.css';
 
 export default function Registro() {
   return (
