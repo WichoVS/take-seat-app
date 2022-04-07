@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/historial.css';
 
 export default function Historial() {

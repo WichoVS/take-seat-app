@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../Assets/Styles/Global/img/logo.png';
 import arrDown from '../../Assets/Styles/Global/img/arrow-down.png';
-import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/Global/restaurante.css';
 import thumb5 from '../../Assets/Styles/Global/img/thumb5.png';
 import thumb6 from '../../Assets/Styles/Global/img/thumb6.png';

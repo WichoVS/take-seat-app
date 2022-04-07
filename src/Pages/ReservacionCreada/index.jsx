@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/reservacionCreada.css';
 import check from '../../Assets/Styles/Global/img/check.png';
 
