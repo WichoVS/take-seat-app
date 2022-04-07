@@ -65,23 +65,6 @@ export default function Registro() {
             </div>
           </div>
         </section>
-
-        <section className="footer">
-          <div className="footer-copyrights">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12">
-                  <p>
-                    <i className="fa fa-copyright" />
-                    Take seat
-                    <i className="fa fa-heart primary-color" />
-                    by Programación Web 2
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   );
