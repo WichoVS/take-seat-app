@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import './Assets/Styles/Global/global.css';
 import Inicio from './Pages/Inicio';
 import Ayuda from './Pages/Ayuda';
 import Administracion from './Pages/Administracion';
@@ -15,7 +14,6 @@ import Registro from './Pages/Registro';
 import Restaurante from './Pages/Restaurante';
 import ReservacionCreada from './Pages/ReservacionCreada';
 import Historial from './Pages/Historial';
-import Login from './Pages/Login';
 
 export default function App() {
   return (
@@ -28,7 +26,6 @@ export default function App() {
         <Route exact path="/Reservacion" element={<Reservacion />} />
         <Route exact path="/RegistroRestaurante" element={<RegistroRestaurante />} />
         <Route exact path="/Menu" element={<Menu />} />
-        <Route exact path="/Login" element={<Login />} />
         <Route exact path="/Pago" element={<Pago />} />
         <Route exact path="/Perfil" element={<Perfil />} />
         <Route exact path="/Registro" element={<Registro />} />

@@ -1,6 +1,9 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-console */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {} from 'reactstrap';
+import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/Global/inicio.css';
 import logo from '../../Assets/Styles/Global/img/logo.png';
 import scroll from '../../Assets/Styles/Global/img/arrow-down.png';
@@ -11,7 +14,7 @@ import recipie3 from '../../Assets/Styles/Global/img/recipie/3.jpg';
 import recipie4 from '../../Assets/Styles/Global/img/recipie/4.jpg';
 import recipie5 from '../../Assets/Styles/Global/img/recipie/5.jpg';
 
-export default function Inicio() {
+function Inicio() {
   return (
     <div className="body">
       <div className="main-wrapper">
@@ -255,3 +258,5 @@ export default function Inicio() {
     </div>
   );
 }
+
+export default Inicio;
