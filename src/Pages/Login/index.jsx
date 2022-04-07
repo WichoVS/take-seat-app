@@ -2,8 +2,7 @@
 import React from 'react';
 import {} from 'reactstrap';
 import '../../Assets/Styles/Global/inicio.css';
-import '../../Assets/Styles/Global/login.css';
-import '../../Assets/Pantallas/HTML/css/plugin.css';
+// import '../../Assets/Styles/Global/login.css';
 
 export default function Login() {
   return (
@@ -34,12 +33,7 @@ export default function Login() {
                           <div className="form-group">
                             <div className="col-md-12">
                               <label htmlFor="emailLogin">Correo Electrónico</label>
-                              <input
-                                id="emailLogin"
-                                type="text"
-                                value=""
-                                className="form-control"
-                              />
+                              <input id="emailLogin" type="text" className="form-control" />
                             </div>
                           </div>
                         </div>
@@ -48,12 +42,7 @@ export default function Login() {
                           <div className="form-group">
                             <div className="col-md-12">
                               <label htmlFor="passwLogin">Contraseña</label>
-                              <input
-                                id="passwLogin"
-                                type="password"
-                                value=""
-                                className="form-control"
-                              />
+                              <input id="passwLogin" type="password" className="form-control" />
                             </div>
                           </div>
                         </div>
