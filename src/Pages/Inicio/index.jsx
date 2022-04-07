@@ -89,9 +89,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-md-4 d-flex flex-column align-items-center restaurant-card">
@@ -105,9 +105,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-md-4 d-flex flex-column align-items-center restaurant-card">
@@ -121,9 +121,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -140,9 +140,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-md-4 d-flex flex-column restaurant-card">
@@ -156,9 +156,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-md-4 d-flex flex-column restaurant-card">
@@ -172,9 +172,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -191,9 +191,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-md-4 d-flex flex-column restaurant-card">
@@ -207,9 +207,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default">
+                  <Link to="/Restaurante" className="btn btn-default">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="col-md-4 d-flex flex-column restaurant-card">
@@ -223,9 +223,9 @@ function Inicio() {
                     <span className="material-icons star-active">grade</span>
                     <span className="material-icons star-inactive">grade</span>
                   </div>
-                  <a href="./RESTAURANT.html" className="btn btn-default ">
+                  <Link to="/Restaurante" className="btn btn-default ">
                     Ver
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -236,19 +236,19 @@ function Inicio() {
             <div className="d-flex justify-content-center">
               <ul className="pagi_nation">
                 <li className="pagina-circle active">
-                  <a className="pagina-a pagina-a-active" href="./INICIO.html">
+                  <Link className="pagina-a pagina-a-active" to="/">
                     1
-                  </a>
+                  </Link>
                 </li>
                 <li className="pagina-circle">
-                  <a className="pagina-a" href="./INICIO.html">
+                  <Link className="pagina-a" to="/">
                     2
-                  </a>
+                  </Link>
                 </li>
                 <li className="pagina-circle">
-                  <a className="pagina-a" href="./INICIO.html">
+                  <Link className="pagina-a" to="/">
                     3
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

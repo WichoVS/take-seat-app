@@ -1,0 +1,29 @@
+.historial-h3 {
+  font-size: 24px;
+}
+
+.cart-table {
+  font-size: 16px;
+}
+
+.cart-table thead {
+  border-top: 1px solid #000;
+}
+
+.cart-table thead tr th {
+  background: #000;
+  color: #fff;
+  border: 1px solid #222;
+  text-transform: uppercase;
+  line-height: 40px;
+}
+
+.cart-table thead tr th, .cart-table tbody tr td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table thead tr th {
+  border-radius: 0px !important;
+  border: none;
+}

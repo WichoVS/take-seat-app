@@ -1,0 +1,26 @@
+.shop-content {
+  padding: 60px 0;
+  font-family: Josefin Sans;
+}
+
+.pago-h4 {
+  font-size: 18px;
+}
+
+.table.extra-padding tbody tr th, .table.extra-padding tbody tr td {
+  padding: 15px;
+}
+
+.top-space-lg {
+  margin-top: 40px;
+}
+
+input, textarea {
+  outline: 0;
+}
+
+.payment-method form span {
+  text-transform: none;
+  font-size: 15px;
+  margin-left: 9px;
+}
