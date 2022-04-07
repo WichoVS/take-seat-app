@@ -14,6 +14,7 @@ import Registro from './Pages/Registro';
 import Restaurante from './Pages/Restaurante';
 import ReservacionCreada from './Pages/ReservacionCreada';
 import Historial from './Pages/Historial';
+import Login from './Pages/Login';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
         <Route exact path="/Restaurante" element={<Restaurante />} />
         <Route exact path="/ReservacionCreada" element={<ReservacionCreada />} />
         <Route exact path="/Historial" element={<Historial />} />
+        <Route exact path="/Login" element={<Login />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

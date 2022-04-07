@@ -2,7 +2,6 @@
 import React from 'react';
 import {} from 'reactstrap';
 import '../../Assets/Styles/Global/inicio.css';
-// import '../../Assets/Styles/Global/login.css';
 
 export default function Login() {
   return (
@@ -26,7 +25,7 @@ export default function Login() {
                   <div className="col-md-3" />
                   <div className="col-md-6">
                     <div className="box-content">
-                      <h3 className="text-center">Usuario Existente</h3>
+                      <h3 className="text-center">Ingresa a Take Seat</h3>
                       <br />
                       <form className="logregform">
                         <div className="row">
