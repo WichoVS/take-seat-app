@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import {} from 'reactstrap';
+import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/Global/inicio.css';
 import '../../Assets/Styles/Global/login.css';
 import '../../Assets/Pantallas/HTML/css/plugin.css';
+import '../../Assets/Pantallas/HTML/css/bootstrap.min.css';
 
 export default function Login() {
   return (

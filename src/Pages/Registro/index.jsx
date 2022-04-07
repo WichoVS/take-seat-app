@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import {} from 'reactstrap';
-// import '../../Assets/Styles/Global/profile.css';
-// import '../../Assets/Pantallas/HTML/css/plugin.css';
+import '../../Assets/Styles/Global/profile.css';
+import '../../Assets/Pantallas/HTML/css/plugin.css';
+import '../../Assets/Pantallas/HTML/css/bootstrap.min.css';
 
 export default function Registro() {
   return (
@@ -60,6 +61,23 @@ export default function Registro() {
                       <i className="fa fa-paper-plane" /> Regístrate
                     </button>
                   </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="footer">
+          <div className="footer-copyrights">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12">
+                  <p>
+                    <i className="fa fa-copyright" />
+                    Take seat
+                    <i className="fa fa-heart primary-color" />
+                    by Programación Web 2
+                  </p>
                 </div>
               </div>
             </div>

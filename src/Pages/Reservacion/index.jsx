@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/reservacion.css';
 
 export default function Reservacion() {

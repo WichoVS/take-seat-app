@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/pagoReservacion.css';
 
 export default function Pago() {

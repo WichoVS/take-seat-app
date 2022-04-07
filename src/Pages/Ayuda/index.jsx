@@ -1,5 +1,10 @@
-import React from 'react';
+import React from "react";
 
-export default function Ayuda() {
-  return <div>Ayuda Funciona</div>;
+function Ayuda() {
+    return(
+        <div>Ayuda Funciona</div>
+    );
 }
+
+
+export default Ayuda;
