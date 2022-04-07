@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import {} from 'reactstrap';
 import '../../Assets/Styles/Global/inicio.css';
 import { IniciarSesion } from '../../Services/Usuarios/usuarios';
+import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 
 export default function Login() {
   const [correo, setCorreo] = useState('');
@@ -12,6 +14,7 @@ export default function Login() {
 
   return (
     <div className="body">
+      <NavBarra />
       <div className="main-wrapper">
         <section className="page_header login">
           <div className="container">
@@ -90,6 +93,7 @@ export default function Login() {
           </div>
         </section>
       </div>
+      <FooterBarra />
     </div>
   );
 }

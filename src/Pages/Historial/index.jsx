@@ -1,10 +1,13 @@
 import React from 'react';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/historial.css';
+import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 
 export default function Historial() {
   return (
     <div className="body">
+      <NavBarra />
       <div className="main-wrapper">
         <section className="page_header">
           <div className="container">
@@ -55,6 +58,7 @@ export default function Historial() {
           </div>
         </section>
       </div>
+      <FooterBarra />
     </div>
   );
 }

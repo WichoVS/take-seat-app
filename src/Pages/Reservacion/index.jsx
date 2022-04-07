@@ -2,10 +2,13 @@
 import React from 'react';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/reservacion.css';
+import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 
 export default function Reservacion() {
   return (
     <div>
+      <NavBarra />
       <div className="main-wrapper">
         <section className="page_header mb-5">
           <div className="container">
@@ -145,6 +148,7 @@ export default function Reservacion() {
           </div>
         </section>
       </div>
+      <FooterBarra />
     </div>
   );
 }

@@ -1,10 +1,13 @@
 import React from 'react';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/menuRestaurant.css';
+import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 
 export default function Menu() {
   return (
     <div>
+      <NavBarra />
       <div className="main-wrapper">
         <section className="page_header">
           <div className="container">
@@ -127,6 +130,7 @@ export default function Menu() {
             </div>
           </div>
         </section>
+        <FooterBarra />
       </div>
     </div>
   );

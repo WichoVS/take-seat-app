@@ -13,6 +13,7 @@ import rightArr from '../../Assets/Styles/Global/img/right-arrow.png';
 import recipie3 from '../../Assets/Styles/Global/img/recipie/3.jpg';
 import recipie4 from '../../Assets/Styles/Global/img/recipie/4.jpg';
 import recipie5 from '../../Assets/Styles/Global/img/recipie/5.jpg';
+import { BarText } from '../../Components/StyledComponents';
 
 function Inicio() {
   return (
@@ -40,7 +41,7 @@ function Inicio() {
             <div className="col-md-12">
               <div className="page-header wow fadeInDown d-flex align-items-center flex-column">
                 <h1 className="text-white">Top Ofertas Hoy</h1>
-                <hr className="bar-under-text" />
+                <BarText gold />
               </div>
             </div>
           </div>

@@ -1,12 +1,35 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {} from 'reactstrap';
+import { GetUsuario } from '../../Services/Usuarios/usuarios';
+import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 // import '../../Assets/Styles/Global/profile.css';
 // import '../../Assets/Pantallas/HTML/css/plugin.css';
 
 export default function Perfil() {
+  // eslint-disable-next-line no-unused-vars
+  const [usuario, setUsuario] = useState({
+    _id: '',
+    Imagen: '',
+    Correo: '',
+    Nombre: '',
+    Usuario: '',
+  });
+
+  const handleUsuario = (e) => {
+    const { value, name } = e.target;
+    setUsuario({ ...usuario, [name]: value });
+  };
+
+  useEffect(async () => {
+    const { data } = await GetUsuario();
+    setUsuario(data);
+  }, []);
+
   return (
     <div className="body">
+      <NavBarra />
       <div className="main-wrapper">
         <section className="page_header login">
           <div className="container">
@@ -40,7 +63,14 @@ export default function Perfil() {
                           <div className="col-md-6">
                             <div className="form-group">
                               <label htmlFor="first-name">Nombre</label>
-                              <input className="form-control" id="first-name" type="text" />
+                              <input
+                                name="Nombre"
+                                onChange={handleUsuario}
+                                value={usuario.Nombre || ''}
+                                className="form-control"
+                                id="first-name"
+                                type="text"
+                              />
                             </div>
                           </div>
                           <div className="col-md-6">
@@ -54,13 +84,27 @@ export default function Perfil() {
                           <div className="col-md-6">
                             <div className="form-group">
                               <label htmlFor="email">E-mail</label>
-                              <input id="email" className="form-control" type="text" />
+                              <input
+                                name="Correo"
+                                onChange={handleUsuario}
+                                value={usuario.Correo || ''}
+                                id="email"
+                                className="form-control"
+                                type="text"
+                              />
                             </div>
                           </div>
                           <div className="col-md-6">
                             <div className="form-group">
                               <label htmlFor="username2">Nombre de Usuario</label>
-                              <input id="username2" className="form-control" type="text" />
+                              <input
+                                name="Usuario"
+                                onChange={handleUsuario}
+                                value={usuario.Usuario || ''}
+                                id="username2"
+                                className="form-control"
+                                type="text"
+                              />
                             </div>
                           </div>
 
@@ -94,6 +138,7 @@ export default function Perfil() {
           </div>
         </section>
       </div>
+      <FooterBarra />
     </div>
   );
 }

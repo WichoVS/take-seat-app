@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/reservacionCreada.css';
 import check from '../../Assets/Styles/Global/img/check.png';
+import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 
 export default function ReservacionCreada() {
   return (
     <div className="body">
+      <NavBarra />
       <div className="main-wrapper">
         <section className="page_header">
           <div className="container">
@@ -39,6 +42,7 @@ export default function ReservacionCreada() {
           </div>
         </div>
       </div>
+      <FooterBarra />
     </div>
   );
 }

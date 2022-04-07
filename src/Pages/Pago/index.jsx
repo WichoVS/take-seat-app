@@ -3,10 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/pagoReservacion.css';
+import NavBarra from '../../Layouts/Header/NavBar';
+import FooterBarra from '../../Layouts/Footer/Footer';
 
 export default function Pago() {
   return (
     <div>
+      <NavBarra />
       <div className="main-wrapper">
         <section className="page_header">
           <div className="container">
@@ -99,6 +102,7 @@ export default function Pago() {
           </div>
         </section>
       </div>
+      <FooterBarra />
     </div>
   );
 }
