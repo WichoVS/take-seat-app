@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {} from 'reactstrap';
 import { RegistroUsuario } from '../../Services/Usuarios/usuarios';
 import NavBarra from '../../Layouts/Header/NavBar';
 import FooterBarra from '../../Layouts/Footer/Footer';
@@ -120,6 +119,7 @@ export default function Registro() {
                         </div>
                         <div className="row">
                           <div className="form-group">
+                            <span>Fotografía</span>
                             <input
                               onChange={handleUser}
                               name="imagen"
@@ -127,7 +127,6 @@ export default function Registro() {
                               className="form-control"
                               id="user-thumb-reg"
                             />
-                            <span>Fotografía</span>
                             <div className="thumb-holder" />
                           </div>
                         </div>
