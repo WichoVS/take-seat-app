@@ -1,0 +1,48 @@
+.element-tab {
+  border: 1px solid #e6e6e6;
+}
+
+.element-tab .nav-tabs {
+  border-bottom: 1px solid #DDD;
+}
+
+.element-tab .nav-tabs>li.active {
+  border-bottom: 1px solid #fff;
+}
+
+.element-tab .nav-tabs>li {
+  border-right: 1px solid #e6e6e6;
+}
+
+.nav-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+  padding: 0 35px 0 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.element-tab .nav-tabs>li.active>a, .element-tab .nav-tabs>li:hover>a {
+  color: #eeaf41;
+}
+
+.element-tab .nav-tabs>li>a {
+  color: #4B4741;
+  font-size: 14px;
+  font-family: Raleway;
+  padding: 25px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li:hover a {
+  color: #4b4741;
+}
+
+
+.nav-tabs>li a {
+  color: #b9b9b9;
+  border: none !important;
+  margin: 0 0 1px;
+  background: transparent !important;
+  padding: 10px 0px;
+}

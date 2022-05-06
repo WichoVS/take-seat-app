@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Assets/Styles/administracion.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Inicio from './Pages/Inicio';
 import Ayuda from './Pages/Ayuda';
@@ -15,6 +16,7 @@ import Restaurante from './Pages/Restaurante';
 import ReservacionCreada from './Pages/ReservacionCreada';
 import Historial from './Pages/Historial';
 import Login from './Pages/Login';
+import NotFound from './Pages/NotFound404';
 
 export default function App() {
   return (
@@ -22,7 +24,7 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<Inicio />} />
         <Route exact path="/Ayuda" element={<Ayuda />} />
-        <Route exact path="/Administracion/Config" element={<Administracion />} />
+        <Route exact path="/Administracion/:config" element={<Administracion />} />
         <Route exact path="/Busqueda" element={<Busqueda />} />
         <Route exact path="/Reservacion" element={<Reservacion />} />
         <Route exact path="/RegistroRestaurante" element={<RegistroRestaurante />} />
@@ -34,8 +36,9 @@ export default function App() {
         <Route exact path="/ReservacionCreada" element={<ReservacionCreada />} />
         <Route exact path="/Historial" element={<Historial />} />
         <Route exact path="/Login" element={<Login />} />
-
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route exact path="/Administracion" element={<Administracion />} />
+        <Route exact path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </Router>
   );

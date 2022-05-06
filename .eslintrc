@@ -32,6 +32,7 @@
           "some": ["nesting", "id"]
         }
       }
-    ]
+    ],
+    "prefer-destructuring": ["error", { "object": false, "array": false }]
   }
 }
