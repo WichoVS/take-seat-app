@@ -40,4 +40,10 @@ const TogglePaisStatus = async (paisId) => {
   return resp;
 };
 
-export { GetAllPaises, GetPaisById, UpdatePais, CreatePais, TogglePaisStatus };
+const GetActivePaises = async () => {
+  const { data: resp } = await axios.get(`${urlBase}/pais/getActivePaises`, { headers });
+
+  return resp;
+};
+
+export { GetAllPaises, GetPaisById, UpdatePais, CreatePais, TogglePaisStatus, GetActivePaises };

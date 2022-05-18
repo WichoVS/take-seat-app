@@ -1,29 +1,114 @@
-import React, { useState } from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { RegistroUsuario } from '../../Services/Usuarios/usuarios';
+// import { RegistroUsuario } from '../../Services/Usuarios/usuarios';
 import NavBarra from '../../Layouts/Header/NavBar';
 import FooterBarra from '../../Layouts/Footer/Footer';
 import InputText from '../../Components/InputText';
 import InputSelect from '../../Components/InputSelect';
+import { GetAllCategorias } from '../../Services/Categorias/categorias';
+import { GetActivePaises } from '../../Services/Paises/paises';
+import { GetActiveEstados } from '../../Services/Estados/estados';
+import { GetActivesCiudades } from '../../Services/Ciudades/ciudades';
+import { RegistrarRestaurante } from '../../Services/Restaurantes/restaurantes';
 
 export default function RegistroRestaurante() {
-  const [userReg, setUserReg] = useState({
-    nombre: '',
-    apellido: '',
-    correo: '',
-    usuario: '',
-    password: '',
-    imagen: '',
+  const [ciudades, setCiudades] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [paises, setPaises] = useState([]);
+  const [estados, setEstados] = useState([]);
+
+  const [restaurante, setRestaurante] = useState({
+    _id: '',
+    Nombre: '',
+    Administrador: JSON.parse(localStorage.getItem('user')),
+    Ubicacion: '',
+    Pais: '',
+    Estado: '',
+    Ciudad: '',
+    Imagen: '',
+    HorarioApertura: -1,
+    HorarioCierre: -1,
+    PrecioReservacion: 0,
+    LugaresTotales: 0,
+    UsuarioCreo: JSON.parse(localStorage.getItem('user')),
+    FechaCreacion: null,
+    UsuarioModifico: '',
+    FechaModificacion: null,
+    Activo: true,
   });
+
   const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
     const { value, name } = e.target;
-    setUserReg({
-      ...userReg,
+
+    setRestaurante({
+      ...restaurante,
       [name]: value,
     });
   };
+
+  const onChangeHorarios = (e) => {
+    const { value, name } = e.target;
+    let horario = value;
+
+    if (name === 'HorarioApertura') {
+      horario = parseInt(value.replace(':', ''), 10);
+      setRestaurante({
+        ...restaurante,
+        HorarioApertura: horario,
+      });
+    } else {
+      horario = parseInt(value.replace(':', ''), 10);
+      setRestaurante({
+        ...restaurante,
+        HorarioCierre: horario,
+      });
+    }
+  };
+
+  const onImageHandler = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      console.log(reader.result);
+      setRestaurante({
+        ...restaurante,
+        Imagen: reader.result,
+      });
+    };
+    reader.onerror = (error) => {
+      console.log(error);
+    };
+  };
+
+  const onSubmitForm = async () => {
+    const userLog = JSON.parse(localStorage.getItem('user'));
+    if (typeof userLog === 'string') {
+      setRestaurante({ ...restaurante, Administrador: userLog, UsuarioCreo: userLog });
+
+      const { success, message, data } = await RegistrarRestaurante(restaurante);
+      console.log(success, message, data);
+      if (success) {
+        navigate(`/Restaurante/${data._id}`);
+      } else {
+        console.log(message);
+      }
+    }
+  };
+
+  useEffect(async () => {
+    const { success: successCat, data: dataCat } = await GetAllCategorias();
+    const { success: successP, data: dataP } = await GetActivePaises();
+    const { success: successE, data: dataE } = await GetActiveEstados();
+    const { success: successC, data: dataC } = await GetActivesCiudades();
+
+    if (successCat) setCategorias(dataCat);
+    if (successP) setPaises(dataP);
+    if (successE) setEstados(dataE);
+    if (successC) setCiudades(dataC);
+  }, []);
 
   return (
     <div className="body">
@@ -57,14 +142,17 @@ export default function RegistroRestaurante() {
                               label="Restaurante"
                               onChangeText={onChangeHandler}
                               id="Nombre"
+                              value={restaurante.Nombre}
                             />
                           </div>
                           <div className="col-md-6">
-                            <InputText
-                              name="Administrador"
-                              label="Administrador"
+                            <InputSelect
+                              name="Categoria"
+                              label="Categoría"
                               onChangeText={onChangeHandler}
-                              id="Administrador"
+                              id="Categoria"
+                              dataOptions={categorias}
+                              obj={restaurante.Categoria}
                             />
                           </div>
                         </div>
@@ -75,6 +163,7 @@ export default function RegistroRestaurante() {
                               label="Ubicacion"
                               onChangeText={onChangeHandler}
                               id="Ubicacion"
+                              value={restaurante.Ubicacion}
                             />
                           </div>
                           <div className="col-md-6">
@@ -83,6 +172,8 @@ export default function RegistroRestaurante() {
                               label="Pais"
                               onChangeText={onChangeHandler}
                               id="Pais"
+                              dataOptions={paises}
+                              obj={restaurante.Pais}
                             />
                           </div>
                           <div className="col-md-6">
@@ -91,6 +182,8 @@ export default function RegistroRestaurante() {
                               label="Estado"
                               onChangeText={onChangeHandler}
                               id="Estado"
+                              dataOptions={estados}
+                              obj={restaurante.Estado}
                             />
                           </div>
                           <div className="col-md-6">
@@ -99,6 +192,8 @@ export default function RegistroRestaurante() {
                               label="Ciudad"
                               onChangeText={onChangeHandler}
                               id="Ciudad"
+                              dataOptions={ciudades}
+                              obj={restaurante.Ciudad}
                             />
                           </div>
                         </div>
@@ -107,16 +202,26 @@ export default function RegistroRestaurante() {
                             <InputText
                               name="HorarioApertura"
                               label="Horario de Apertura"
-                              onChangeText={onChangeHandler}
+                              onChangeText={onChangeHorarios}
                               id="HorarioApertura"
+                              value={
+                                restaurante.HorarioApertura === -1
+                                  ? ''
+                                  : restaurante.HorarioApertura.toString()
+                              }
                             />
                           </div>
                           <div className="col-md-6">
                             <InputText
                               name="HorarioCierre"
                               label="Horario de Cierre"
-                              onChangeText={onChangeHandler}
+                              onChangeText={onChangeHorarios}
                               id="HorarioCierre"
+                              value={
+                                restaurante.HorarioCierre === -1
+                                  ? ''
+                                  : restaurante.HorarioCierre.toString()
+                              }
                             />
                           </div>
                         </div>
@@ -127,6 +232,7 @@ export default function RegistroRestaurante() {
                               label="Precio de Reservación"
                               onChangeText={onChangeHandler}
                               id="PrecioReservacion"
+                              value={restaurante.PrecioReservacion.toString()}
                             />
                           </div>
                           <div className="col-md-6">
@@ -135,6 +241,7 @@ export default function RegistroRestaurante() {
                               label="Lugares Totales"
                               onChangeText={onChangeHandler}
                               id="LugaresTotales"
+                              value={restaurante.LugaresTotales.toString()}
                             />
                           </div>
                         </div>
@@ -142,8 +249,8 @@ export default function RegistroRestaurante() {
                           <div className="form-group">
                             <span>Fotografía</span>
                             <input
-                              onChange={onChangeHandler}
-                              name="imagen"
+                              onChange={onImageHandler}
+                              name="Imagen"
                               type="file"
                               className="form-control"
                               id="user-thumb-reg"
@@ -154,18 +261,7 @@ export default function RegistroRestaurante() {
                         <div className="row">
                           <div className="col-md-4">
                             <button
-                              onClick={() => {
-                                if (
-                                  RegistroUsuario(
-                                    userReg.nombre,
-                                    userReg.correo,
-                                    userReg.usuario,
-                                    userReg.password,
-                                  )
-                                ) {
-                                  navigate('/');
-                                }
-                              }}
+                              onClick={onSubmitForm}
                               type="button"
                               className="btn btn-default pull-right"
                             >

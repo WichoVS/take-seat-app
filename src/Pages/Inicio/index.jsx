@@ -1,6 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {} from 'reactstrap';
 import '../../Assets/Styles/Global/global.css';
@@ -10,12 +11,21 @@ import scroll from '../../Assets/Styles/Global/img/arrow-down.png';
 import thumb4 from '../../Assets/Styles/Global/img/thumb4.png';
 import leftArr from '../../Assets/Styles/Global/img/left-arrow.png';
 import rightArr from '../../Assets/Styles/Global/img/right-arrow.png';
-import recipie3 from '../../Assets/Styles/Global/img/recipie/3.jpg';
-import recipie4 from '../../Assets/Styles/Global/img/recipie/4.jpg';
-import recipie5 from '../../Assets/Styles/Global/img/recipie/5.jpg';
 import { BarText } from '../../Components/StyledComponents';
+import { GetAllRestaurantes } from '../../Services/Restaurantes/restaurantes';
 
 function Inicio() {
+  const [restaurantes, setRestaurantes] = useState([]);
+
+  useEffect(async () => {
+    const { success, message, data } = await GetAllRestaurantes();
+    if (success) {
+      setRestaurantes(data);
+    } else {
+      console.log(message);
+    }
+  }, []);
+
   return (
     <div className="body">
       <div className="main-wrapper">
@@ -79,156 +89,27 @@ function Inicio() {
         <section className="recipie-content ">
           <div className="container col-md-11">
             <div className="row justify-content-center">
-              <div className="col-md-4 d-flex flex-column align-items-center restaurant-card">
-                <img src={recipie3} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">Italianni&apos;s</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
+              {restaurantes.map((r) => (
+                <div
+                  key={r._id}
+                  className="col-md-4 d-flex flex-column align-items-center restaurant-card"
+                >
+                  <img src={r.Imagen} alt="" />
+                  <div className="rc-info rc-info-div">
+                    <h4 className="rc-info-h4">{r.Nombre}</h4>
+                    <div className="rc-ratings">
+                      <span className="material-icons star-active">grade</span>
+                      <span className="material-icons star-active">grade</span>
+                      <span className="material-icons star-active">grade</span>
+                      <span className="material-icons star-active">grade</span>
+                      <span className="material-icons star-inactive">grade</span>
+                    </div>
+                    <Link to={`/Restaurante/${r._id}`} className="btn btn-default">
+                      Ver
+                    </Link>
                   </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
                 </div>
-              </div>
-              <div className="col-md-4 d-flex flex-column align-items-center restaurant-card">
-                <img src={recipie4} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">AppleBees</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-4 d-flex flex-column align-items-center restaurant-card">
-                <img src={recipie5} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">Giardinno&apos;s</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="row justify-content-center">
-              <div className="col-md-4 d-flex flex-column restaurant-card">
-                <img src={recipie3} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">Wok Oriental Food</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-4 d-flex flex-column restaurant-card">
-                <img src={recipie4} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">Olive Garden</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-4 d-flex flex-column restaurant-card">
-                <img src={recipie5} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">Tomatillos</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="row justify-content-center">
-              <div className="col-md-4 d-flex flex-column restaurant-card">
-                <img src={recipie3} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">Italianni&apos;s</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-4 d-flex flex-column restaurant-card">
-                <img src={recipie4} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">AppleBees</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default">
-                    Ver
-                  </Link>
-                </div>
-              </div>
-              <div className="col-md-4 d-flex flex-column restaurant-card">
-                <img src={recipie5} alt="" />
-                <div className="rc-info rc-info-div">
-                  <h4 className="rc-info-h4">Giardinno&apos;s</h4>
-                  <div className="rc-ratings">
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-active">grade</span>
-                    <span className="material-icons star-inactive">grade</span>
-                  </div>
-                  <Link to="/Restaurante" className="btn btn-default ">
-                    Ver
-                  </Link>
-                </div>
-              </div>
+              ))}
             </div>
 
             <hr />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Assets/Styles/administracion.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -18,6 +18,8 @@ import Historial from './Pages/Historial';
 import Login from './Pages/Login';
 import NotFound from './Pages/NotFound404';
 
+export const appContext = createContext();
+
 export default function App() {
   return (
     <Router>
@@ -32,7 +34,7 @@ export default function App() {
         <Route exact path="/Pago" element={<Pago />} />
         <Route exact path="/Perfil" element={<Perfil />} />
         <Route exact path="/Registro" element={<Registro />} />
-        <Route exact path="/Restaurante" element={<Restaurante />} />
+        <Route exact path="/Restaurante/:restaurante" element={<Restaurante />} />
         <Route exact path="/ReservacionCreada" element={<ReservacionCreada />} />
         <Route exact path="/Historial" element={<Historial />} />
         <Route exact path="/Login" element={<Login />} />
