@@ -8,7 +8,7 @@ export default function InputSelect({
   onChangeText,
   name,
   id,
-  restaurante,
+  obj,
   error = {},
   dataOptions = [],
 }) {
@@ -20,12 +20,14 @@ export default function InputSelect({
         onChange={onChangeText}
         name={name}
         id={id}
-        value={restaurante._id || ''}
+        value={obj || ''}
       >
         <option value=""> .::Selecciona una opcion::.</option>
-        {dataOptions.forEach((e) => {
-          <option value={e._id}> e.Nombre</option>;
-        })}
+        {dataOptions.map((e) => (
+          <option key={e._id} value={e._id}>
+            {e.Nombre}
+          </option>
+        ))}
       </select>
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
@@ -34,16 +36,16 @@ export default function InputSelect({
 
 InputSelect.propTypes = {
   label: PropTypes.string.isRequired,
-  onChangeText: PropTypes.string.isRequired,
+  onChangeText: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  restaurante: PropTypes.shape({ root: PropTypes.string.isRequired }),
-  dataOptions: PropTypes.arrayOf(PropTypes.shape({ root: PropTypes.string.isRequired })),
+  obj: PropTypes.string,
+  dataOptions: PropTypes.arrayOf(PropTypes.shape({ _id: PropTypes.string.isRequired })),
   error: PropTypes.string,
 };
 
 InputSelect.defaultProps = {
-  restaurante: {},
+  obj: '',
   dataOptions: [],
   error: '',
 };
