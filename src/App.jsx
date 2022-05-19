@@ -17,6 +17,7 @@ import ReservacionCreada from './Pages/ReservacionCreada';
 import Historial from './Pages/Historial';
 import Login from './Pages/Login';
 import NotFound from './Pages/NotFound404';
+import RestauranteAdministracion from './Pages/RestauranteAdministracion';
 
 export const appContext = createContext();
 
@@ -35,6 +36,11 @@ export default function App() {
         <Route exact path="/Perfil" element={<Perfil />} />
         <Route exact path="/Registro" element={<Registro />} />
         <Route exact path="/Restaurante/:restaurante" element={<Restaurante />} />
+        <Route
+          exact
+          path="/RestauranteAdministracion/:restaurante"
+          element={<RestauranteAdministracion />}
+        />
         <Route exact path="/ReservacionCreada" element={<ReservacionCreada />} />
         <Route exact path="/Historial" element={<Historial />} />
         <Route exact path="/Login" element={<Login />} />
