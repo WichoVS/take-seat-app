@@ -33,7 +33,7 @@ export default function ReservacionCreada() {
                   Impresionante. Su solicitud ha sido recibida y su reservación hecha.{' '}
                 </p>
                 <p className="top-space-lg">
-                  <Link to="/" onclick="history.go(-1);" className="btn btn-success btn-lg">
+                  <Link to="/" className="btn btn-success btn-lg">
                     Volver
                   </Link>
                 </p>

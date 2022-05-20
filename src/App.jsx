@@ -17,6 +17,7 @@ import ReservacionCreada from './Pages/ReservacionCreada';
 import Historial from './Pages/Historial';
 import Login from './Pages/Login';
 import NotFound from './Pages/NotFound404';
+import RestauranteAdministracion from './Pages/RestauranteAdministracion';
 
 export const appContext = createContext();
 
@@ -28,13 +29,18 @@ export default function App() {
         <Route exact path="/Ayuda" element={<Ayuda />} />
         <Route exact path="/Administracion/:config" element={<Administracion />} />
         <Route exact path="/Busqueda" element={<Busqueda />} />
-        <Route exact path="/Reservacion" element={<Reservacion />} />
+        <Route exact path="/Reservacion/:restaurante" element={<Reservacion />} />
         <Route exact path="/RegistroRestaurante" element={<RegistroRestaurante />} />
-        <Route exact path="/Menu" element={<Menu />} />
-        <Route exact path="/Pago" element={<Pago />} />
+        <Route exact path="/Menu/:restaurante" element={<Menu />} />
+        <Route exact path="/Pago/:reservacion" element={<Pago />} />
         <Route exact path="/Perfil" element={<Perfil />} />
         <Route exact path="/Registro" element={<Registro />} />
         <Route exact path="/Restaurante/:restaurante" element={<Restaurante />} />
+        <Route
+          exact
+          path="/RestauranteAdministracion/:restaurante"
+          element={<RestauranteAdministracion />}
+        />
         <Route exact path="/ReservacionCreada" element={<ReservacionCreada />} />
         <Route exact path="/Historial" element={<Historial />} />
         <Route exact path="/Login" element={<Login />} />

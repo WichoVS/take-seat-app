@@ -8,11 +8,8 @@ import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/Global/inicio.css';
 import logo from '../../Assets/Styles/Global/img/logo.png';
 import scroll from '../../Assets/Styles/Global/img/arrow-down.png';
-import thumb4 from '../../Assets/Styles/Global/img/thumb4.png';
-import leftArr from '../../Assets/Styles/Global/img/left-arrow.png';
-import rightArr from '../../Assets/Styles/Global/img/right-arrow.png';
-import { BarText } from '../../Components/StyledComponents';
 import { GetAllRestaurantes } from '../../Services/Restaurantes/restaurantes';
+import Header from '../../Layouts/Header/NavBar';
 
 function Inicio() {
   const [restaurantes, setRestaurantes] = useState([]);
@@ -29,6 +26,7 @@ function Inicio() {
   return (
     <div className="body">
       <div className="main-wrapper">
+        <Header />
         <div className="home">
           <div className="tittle-block">
             <div className="logo">
@@ -45,46 +43,6 @@ function Inicio() {
             </Link>
           </div>
         </div>
-
-        <section className="special d-flex flex-column align-items-center">
-          <div className="col-md-12 row">
-            <div className="col-md-12">
-              <div className="page-header wow fadeInDown d-flex align-items-center flex-column">
-                <h1 className="text-white">Top Ofertas Hoy</h1>
-                <BarText gold />
-              </div>
-            </div>
-          </div>
-          <div className="col-md-10 d-flex justify-content-md-center align-items-center">
-            <div className="mx-4 cursor-pointer">
-              <img src={leftArr} alt="" />
-            </div>
-            <div className="card-carousel card d-flex flex-row">
-              <div className="slider-img ">
-                <img className="img-fluid" src={thumb4} alt="" />
-              </div>
-              <div className="slider-content px-4 pt-4">
-                <div className="page-header">
-                  <h1 className="h1-carousel">
-                    Pasta Alfredo
-                    <br />
-                    <small>Fetuccini con crema de queso y camarón.</small>
-                    <hr className="bar-under-text" />
-                  </h1>
-                </div>
-                <p className="p-carousel text-wrap">
-                  Encuentra más ofertas en platillos en los menús de cada restaurante.
-                </p>
-                <button type="button" className="btn btn-default" href="./index.html">
-                  Ver
-                </button>
-              </div>
-            </div>
-            <div className="mx-4 cursor-pointer">
-              <img src={rightArr} alt="" />
-            </div>
-          </div>
-        </section>
 
         <section className="recipie-content ">
           <div className="container col-md-11">
@@ -115,25 +73,6 @@ function Inicio() {
             <hr />
 
             <div className="clearfix" />
-            <div className="d-flex justify-content-center">
-              <ul className="pagi_nation">
-                <li className="pagina-circle active">
-                  <Link className="pagina-a pagina-a-active" to="/">
-                    1
-                  </Link>
-                </li>
-                <li className="pagina-circle">
-                  <Link className="pagina-a" to="/">
-                    2
-                  </Link>
-                </li>
-                <li className="pagina-circle">
-                  <Link className="pagina-a" to="/">
-                    3
-                  </Link>
-                </li>
-              </ul>
-            </div>
           </div>
         </section>
       </div>

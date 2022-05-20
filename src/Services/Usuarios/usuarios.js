@@ -50,4 +50,17 @@ const GetUsuario = async () => {
   return resp;
 };
 
-export { IniciarSesion, RegistroUsuario, GetUsuario };
+const GetUsuarioRestaurante = async () => {
+  const u = JSON.parse(localStorage.getItem('user'));
+  const t = JSON.parse(localStorage.getItem('tkn'));
+
+  const { data: resp } = await axios.get(`${urlBase}/api/v1/usuario/usuarioRestaurante/${u}`, {
+    headers: {
+      Authorization: `Bearer ${t}`,
+    },
+  });
+
+  return resp;
+};
+
+export { IniciarSesion, RegistroUsuario, GetUsuario, GetUsuarioRestaurante };

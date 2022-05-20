@@ -1,12 +1,48 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/pagoReservacion.css';
 import NavBarra from '../../Layouts/Header/NavBar';
 import FooterBarra from '../../Layouts/Footer/Footer';
+import { GetReservacionById, PagarReservacion } from '../../Services/Reservaciones/reservaciones';
 
 export default function Pago() {
+  const { reservacion: reservacionId } = useParams();
+  const [reservacion, setReservacion] = useState({});
+  const [tyC, setTyC] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(async () => {
+    const { success, message, data } = await GetReservacionById(reservacionId);
+    if (success) {
+      setReservacion(data);
+    } else {
+      Swal.fire(message);
+    }
+  }, []);
+
+  const onCheckboxHandle = (e) => {
+    setTyC(!tyC);
+  };
+
+  const onPagar = async () => {
+    if (tyC) {
+      const { success, message } = await PagarReservacion(reservacionId);
+      if (success) {
+        navigate('/ReservacionCreada');
+      } else {
+        Swal.fire({ icon: 'error', text: message });
+      }
+    } else {
+      Swal.fire({ icon: 'error', text: 'Debes de aceptar los términos y condiciones' });
+    }
+  };
+
   return (
     <div>
       <NavBarra />
@@ -26,14 +62,14 @@ export default function Pago() {
             <div className="row justify-content-center">
               <div className="col-md-10 col-md-offset-1">
                 <br />
-                <h4 className="text-start pago-h4">Tu Reservación</h4>
+                <h4 className="text-start pago-h4">Tu Reservación: {reservacion._id}</h4>
                 <br />
                 <table className="table table-bordered extra-padding">
                   <tbody>
                     <tr>
                       <th>Subtotal</th>
                       <td>
-                        <span className="amount">$225</span>
+                        <span className="amount">${reservacion.Costo}</span>
                       </td>
                     </tr>
                     <tr>
@@ -44,7 +80,7 @@ export default function Pago() {
                       <th>Total</th>
                       <td>
                         <strong>
-                          <span className="amount">$225</span>
+                          <span className="amount">${reservacion.Costo}</span>
                         </strong>
                       </td>
                     </tr>
@@ -58,24 +94,22 @@ export default function Pago() {
                     <form className="d-flex justify-content-between">
                       <div className="col-md-4">
                         <label>
-                          <input name="payment" id="radio1" className="css-checkbox" type="radio" />
+                          <input
+                            style={{ display: 'none' }}
+                            name="payment"
+                            id="radio1"
+                            className="css-checkbox"
+                            type="radio"
+                          />
                           <span>Transferencia Interbancaria</span>
                         </label>
                         <div className="space20" />
                         <p>
                           Realice el pago directamente en nuestra cuenta bancaria y use su ID de
-                          pedido como referencia.
+                          Reservacion como referencia.
                         </p>
-                      </div>
-                      <div className="col-md-4">
-                        <label>
-                          <input name="payment" id="radio3" className="css-checkbox" type="radio" />
-                          <span>Paypal</span>
-                        </label>
-                        <div className="space20" />
                         <p>
-                          Pagar a través de PayPal; puede pagar con su tarjeta de crédito si no
-                          tiene una cuenta de PayPal
+                          <strong> Cuenta:</strong> 4423 4151 0985 4721
                         </p>
                       </div>
                     </form>
@@ -87,14 +121,22 @@ export default function Pago() {
                       id="checkboxG2"
                       className="css-checkbox"
                       type="checkbox"
+                      value={tyC}
+                      onChange={onCheckboxHandle}
+                      checked={tyC}
                     />
                     <span>Acepto los Términos y Condiciones</span>
                   </form>
 
                   <div className="text-center top-space-lg">
-                    <Link to="/ReservacionCreada" className="btn btn-default btn-lg">
+                    <button
+                      type="button"
+                      onClick={onPagar}
+                      to="/ReservacionCreada"
+                      className="btn btn-default btn-lg"
+                    >
                       Pagar
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
