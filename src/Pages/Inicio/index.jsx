@@ -38,7 +38,7 @@ function Inicio() {
             <h2>Haz la reservación para tu lugar favorito</h2>
           </div>
           <div className="scroll-down">
-            <Link to="/Perfil">
+            <Link to="/Ayuda">
               <img src={scroll} alt="Logo" />
             </Link>
           </div>

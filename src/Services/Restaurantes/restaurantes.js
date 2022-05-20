@@ -52,6 +52,16 @@ const GetInfoReservacionesRestaurante = async (info) => {
   return resp;
 };
 
+const GetRestaurantesByFilter = async (busqueda) => {
+  const { data: resp } = await axios.post(
+    `${urlBase}/restaurante/getRestaurantesByFilters`,
+    busqueda,
+    { headers },
+  );
+
+  return resp;
+};
+
 // const GetTop3Restaurantes = async () => {};
 
 export {
@@ -60,4 +70,5 @@ export {
   GetAllRestaurantes,
   GetRestauranteById,
   GetInfoReservacionesRestaurante,
+  GetRestaurantesByFilter,
 };
