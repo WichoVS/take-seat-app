@@ -5,19 +5,18 @@ import logo from '../../Assets/Styles/Global/img/logo.png';
 import arrDown from '../../Assets/Styles/Global/img/arrow-down.png';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/Global/restaurante.css';
-import thumb5 from '../../Assets/Styles/Global/img/thumb5.png';
-import thumb6 from '../../Assets/Styles/Global/img/thumb6.png';
-import thumb7 from '../../Assets/Styles/Global/img/thumb7.png';
 import avatar1 from '../../Assets/Styles/Global/img/xtra/1.jpg';
 import avatar2 from '../../Assets/Styles/Global/img/xtra/2.jpg';
 import NavBarra from '../../Layouts/Header/NavBar';
 import FooterBarra from '../../Layouts/Footer/Footer';
 import { GetRestauranteById } from '../../Services/Restaurantes/restaurantes';
 import { GetDescripcionRestaurante } from '../../Services/Descripciones/descripcionesRestaurantes';
+import { GetItemsMenuByRestaurante } from '../../Services/ItemsMenu/itemsMenu';
 
 export default function Restaurante() {
   // eslint-disable-next-line no-unused-vars
   const { restaurante: restauranteId } = useParams();
+  const [items, setItems] = useState([]);
   const [descripcion, setDescripcion] = useState({
     _id: '',
     Restaurante: '',
@@ -68,7 +67,6 @@ export default function Restaurante() {
 
     if (success) {
       setRestaurante(data);
-      console.log(data);
     } else {
       console.log(message);
     }
@@ -84,9 +82,21 @@ export default function Restaurante() {
     } else {
       console.log(mDesc);
     }
+
+    const {
+      success: sItem,
+      message: mItem,
+      data: dItem,
+    } = await GetItemsMenuByRestaurante(restauranteId);
+
+    if (sItem) {
+      setItems(dItem);
+    } else {
+      console.log(mItem);
+    }
   }, []);
 
-  if (restaurante._id !== '') {
+  if (restaurante._id !== '' || items.length < 1) {
     return (
       <>
         <NavBarra />
@@ -98,7 +108,7 @@ export default function Restaurante() {
               </Link>
             </div>
             <h1>{restaurante.Nombre}</h1>
-            <h2>{restaurante.Categoria.Nombre}</h2>
+            <h2>{descripcion.Slogan}</h2>
           </div>
           <div className="scroll-down">
             <Link to="/Ayuda">
@@ -148,57 +158,31 @@ export default function Restaurante() {
                   </div>
                 </div>
                 <div className="row wow fadeInUp col-10 justify-content-center">
-                  <div className="col-md-3 col-sm-5">
-                    <div className="features-tile">
-                      <div className="features-img">
-                        <img src={thumb5} alt="" />
-                      </div>
-                      <div className="features-content">
-                        <div className="page-header">
-                          <h1 className="features-h1">Hecho con amor</h1>
+                  {items.map((i) => {
+                    if (i.Especial) {
+                      return (
+                        <div key={i._id} className="col-md-3 col-sm-5">
+                          <div className="features-tile">
+                            <div className="features-img">
+                              <img src={i.Imagen} alt="" />
+                            </div>
+                            <div className="features-content">
+                              <div className="page-header">
+                                <h1 className="features-h1">{i.Nombre}</h1>
+                              </div>
+                              <hr className="bar-under-text" />
+                              <p>{i.Descripcion}</p>
+                            </div>
+                          </div>
                         </div>
-                        <hr className="bar-under-text" />
-                        <p>
-                          Vive la mejor experiencia culinaria con nuestro fetuccini Alfredo, servico
-                          con crema de 4 quesos y camarones.
-                        </p>
+                      );
+                    }
+                    return (
+                      <div key={i._id} className="">
+                        {' '}
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-md-3 col-sm-5">
-                    <div className="features-tile">
-                      <div className="features-img">
-                        <img src={thumb6} alt="" />
-                      </div>
-                      <div className="features-content">
-                        <div className="page-header">
-                          <h1 className="features-h1">Hecho con amor</h1>
-                        </div>
-                        <hr className="bar-under-text" />
-                        <p>
-                          Vive la mejor experiencia culinaria con nuestro fetuccini Alfredo, servico
-                          con crema de 4 quesos y camarones.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-3 col-sm-5">
-                    <div className="features-tile">
-                      <div className="features-img">
-                        <img src={thumb7} alt="" />
-                      </div>
-                      <div className="features-content">
-                        <div className="page-header">
-                          <h1 className="features-h1">Hecho con amor</h1>
-                        </div>
-                        <hr className="bar-under-text" />
-                        <p>
-                          Vive la mejor experiencia culinaria con nuestro fetuccini Alfredo, servico
-                          con crema de 4 quesos y camarones.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -210,14 +194,22 @@ export default function Restaurante() {
             <div className="col-md-9  container d-flex">
               <div className="col-md-4">
                 <div className="menu-btn">
-                  <Link type="button" className="btn btn-default btn-lg" to="/Menu">
+                  <Link
+                    type="button"
+                    className="btn btn-default btn-lg"
+                    to={`/Menu/${restauranteId}`}
+                  >
                     Nuestro Menú
                   </Link>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="menu-btn">
-                  <Link type="button" className="btn btn-default btn-lg" to="/Reservacion">
+                  <Link
+                    type="button"
+                    className="btn btn-default btn-lg"
+                    to={`/Reservacion/${restauranteId}`}
+                  >
                     Hacer Reservación
                   </Link>
                 </div>

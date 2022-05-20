@@ -1,10 +1,27 @@
-import React from 'react';
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/menuRestaurant.css';
 import NavBarra from '../../Layouts/Header/NavBar';
 import FooterBarra from '../../Layouts/Footer/Footer';
 
+import { GetItemsMenuByRestaurante } from '../../Services/ItemsMenu/itemsMenu';
+
 export default function Menu() {
+  const { restaurante: restauranteId } = useParams();
+  const [items, setItems] = useState([]);
+
+  useEffect(async () => {
+    const { success: sI, message: mI, data: dI } = await GetItemsMenuByRestaurante(restauranteId);
+    if (sI) {
+      setItems(dI);
+    } else {
+      console.log(dI);
+    }
+  }, []);
+
   return (
     <div>
       <NavBarra />
@@ -46,86 +63,16 @@ export default function Menu() {
                 </div>
               </div>
               <div className="row menu-items">
-                <div className="menu-item col-sm-6 col-xs-12 starter dinner desserts">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
+                {items.map((i) => (
+                  <div key={i._id} className="menu-item col-sm-6 col-xs-12 starter dinner desserts">
+                    <div className="clearfix menu-wrapper">
+                      <h4>{i.Nombre}</h4>
+                      <span className="price">{`$${i.Costo}`}</span>
+                      <div className="dotted-bg" />
+                    </div>
+                    <p>{i.Descripcion}</p>
                   </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 starter">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 breakfast desserts starter">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 breakfast">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 lunch starter breakfast">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 lunch">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 dinner breakfast lunch">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredp</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 dinner">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 desserts lunch dinner">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
-                <div className="menu-item col-sm-6 col-xs-12 desserts">
-                  <div className="clearfix menu-wrapper">
-                    <h4>Pasta Alfredo</h4>
-                    <span className="price">$225</span>
-                    <div className="dotted-bg" />
-                  </div>
-                  <p>Fetuccini con crema de queso y camarón</p>
-                </div>
+                ))}
               </div>
             </div>
           </div>

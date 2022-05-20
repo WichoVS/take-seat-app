@@ -5,7 +5,6 @@ import Footer from '../../Layouts/Footer/Footer';
 import InformacionComponent from '../../Components/Restaurante/Informacion';
 import MenuComponent from '../../Components/Restaurante/Menu';
 import ReservacionesComponent from '../../Components/Restaurante/Reservaciones';
-import PromocionesComponent from '../../Components/Restaurante/Promociones';
 import DescripcionComponent from '../../Components/Restaurante/Descripcion';
 
 export default function RestauranteAdministracion() {
@@ -30,11 +29,12 @@ export default function RestauranteAdministracion() {
         return <MenuComponent />;
       case 'Reservaciones':
         return <ReservacionesComponent />;
-      case 'Promociones':
-        return <PromocionesComponent />;
-
       default:
-        return <div style={{ minHeight: '369px' }}> Eliga una Opcion de las Tabs</div>;
+        return (
+          <div style={{ minHeight: '369px' }} className="col-10 mt-4 text-center">
+            <h4>Eliga una Opcion de las Tabs</h4>
+          </div>
+        );
     }
   };
 
@@ -87,16 +87,6 @@ export default function RestauranteAdministracion() {
                       name="Reservaciones"
                     >
                       Reservaciones
-                    </button>
-                  </li>
-                  <li className={adminTabPage === 'Promociones' ? 'active col-3 p-0' : 'col-3 p-0'}>
-                    <button
-                      className="col-12 btn"
-                      type="button"
-                      onClick={onChangeTabHandler}
-                      name="Promociones"
-                    >
-                      Promociones
                     </button>
                   </li>
                 </ul>

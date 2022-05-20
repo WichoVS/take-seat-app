@@ -44,6 +44,20 @@ const GetRestauranteById = async (idRestaurante) => {
   return resp;
 };
 
+const GetInfoReservacionesRestaurante = async (info) => {
+  const { data: resp } = await axios.post(`${urlBase}/restaurante/infoReservacion`, info, {
+    headers,
+  });
+
+  return resp;
+};
+
 // const GetTop3Restaurantes = async () => {};
 
-export { RegistrarRestaurante, UpdateRestaurante, GetAllRestaurantes, GetRestauranteById };
+export {
+  RegistrarRestaurante,
+  UpdateRestaurante,
+  GetAllRestaurantes,
+  GetRestauranteById,
+  GetInfoReservacionesRestaurante,
+};
