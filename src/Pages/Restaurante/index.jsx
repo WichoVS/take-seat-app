@@ -5,17 +5,30 @@ import logo from '../../Assets/Styles/Global/img/logo.png';
 import arrDown from '../../Assets/Styles/Global/img/arrow-down.png';
 import '../../Assets/Styles/Global/global.css';
 import '../../Assets/Styles/Global/restaurante.css';
-import avatar1 from '../../Assets/Styles/Global/img/xtra/1.jpg';
-import avatar2 from '../../Assets/Styles/Global/img/xtra/2.jpg';
 import NavBarra from '../../Layouts/Header/NavBar';
 import FooterBarra from '../../Layouts/Footer/Footer';
 import { GetRestauranteById } from '../../Services/Restaurantes/restaurantes';
 import { GetDescripcionRestaurante } from '../../Services/Descripciones/descripcionesRestaurantes';
 import { GetItemsMenuByRestaurante } from '../../Services/ItemsMenu/itemsMenu';
+import {
+  CanComentar,
+  CrearComentario,
+  GetComentariosByRestaurante,
+} from '../../Services/Comentarios/comentarios';
 
 export default function Restaurante() {
   // eslint-disable-next-line no-unused-vars
   const { restaurante: restauranteId } = useParams();
+  const [canComentar, setCanComentar] = useState(false);
+  const [comentario, setComentario] = useState({
+    _id: '',
+    UsuarioReview: JSON.parse(localStorage.getItem('user')),
+    Restaurante: restauranteId,
+    Comentario: '',
+    FechaCalificacion: null,
+    Activo: true,
+  });
+  const [comentarios, setComentarios] = useState([]);
   const [items, setItems] = useState([]);
   const [descripcion, setDescripcion] = useState({
     _id: '',
@@ -62,6 +75,28 @@ export default function Restaurante() {
     Activo: true,
   });
 
+  const onHandleComment = (e) => {
+    setComentario({ ...comentario, Comentario: e.target.value });
+  };
+
+  const onSubmitComment = async () => {
+    const { success, data } = await CrearComentario(comentario);
+    if (success) {
+      const { success: c, data: dc } = await GetComentariosByRestaurante(restauranteId);
+      if (c) {
+        setComentarios(dc);
+      } else {
+        console.log(dc);
+      }
+    } else {
+      console.log(data);
+    }
+  };
+
+  const fechaToDateTime = (fecha) => {
+    const _fecha = new Date(fecha).toLocaleString();
+    return _fecha;
+  };
   useEffect(async () => {
     const { success, message, data } = await GetRestauranteById(restauranteId);
 
@@ -93,6 +128,21 @@ export default function Restaurante() {
       setItems(dItem);
     } else {
       console.log(mItem);
+    }
+
+    const user = JSON.parse(localStorage.getItem('user'));
+    const { success: sCC, message: mCC, data: dCC } = await CanComentar(user, restauranteId);
+    if (sCC) {
+      setCanComentar(dCC);
+    } else {
+      console.log(mCC);
+    }
+
+    const { success: c, data: dc } = await GetComentariosByRestaurante(restauranteId);
+    if (c) {
+      setComentarios(dc);
+    } else {
+      console.log(dc);
     }
   }, []);
 
@@ -224,89 +274,57 @@ export default function Restaurante() {
               <div className="row">
                 <div className="col-md-9">
                   <div className="comments-area">
-                    <h3>3 Comentarios</h3>
+                    <h3>{comentarios.length} Comentarios</h3>
                     <ul className="commentlist">
-                      <li>
-                        <div className="comment">
-                          <span className="comment-image">
-                            <img src={avatar1} className="avatar" height="70" width="70" alt="" />
-                          </span>
-                          <span className="comment-info d-text-c">
-                            <span>
-                              Hace 5 días &nbsp; / &nbsp;
-                              <a className="comment-reply-link d-text-c" href="./RESTAURANT.html">
-                                Responder
-                              </a>
+                      {comentarios.map((c) => (
+                        <li key={c._id}>
+                          <div className="comment mb-4">
+                            <span className="comment-image">
+                              <img
+                                src={c.UsuarioReview.Imagen}
+                                className="avatar"
+                                height="70"
+                                width="70"
+                                alt=""
+                              />
                             </span>
-                            Gabriel Martínez
-                          </span>
-                          <p>Me encantó, volvería a ir.</p>
-                        </div>
-                        <ul className="children">
-                          <li>
-                            <div className="comment">
-                              <span className="comment-image">
-                                <img
-                                  src={avatar2}
-                                  className="avatar"
-                                  height="70"
-                                  width="70"
-                                  alt=""
-                                />
-                              </span>
-                              <span className="comment-info d-text-c">
-                                <span>
-                                  Hace 3 días &nbsp; / &nbsp;
-                                  <a
-                                    className="comment-reply-link d-text-c"
-                                    href="./RESTAURANT.html"
-                                  >
-                                    Responder
-                                  </a>
-                                </span>
-                                Marisela Ortíz
-                              </span>
-                              <p>Llevé a mi esposo para nuestro aniversario, buenísimo.</p>
-                            </div>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <div className="comment">
-                          <span className="comment-image">
-                            <img src={avatar1} className="avatar" height="70" width="70" alt="" />
-                          </span>
-                          <span className="comment-info d-text-c">
-                            <span>
-                              Hace 1 día &nbsp; / &nbsp;
-                              <a className="comment-reply-link d-text-c" href="./RESTAURANT.html">
-                                Responder
-                              </a>
+                            <span className="comment-info d-text-c">
+                              <span>{fechaToDateTime(c.FechaCalificacion)} </span>
+                              {c.UsuarioReview.Nombre}
                             </span>
-                            Marcelo José
-                          </span>
-                          <p>Muy bueno.</p>
-                        </div>
-                      </li>
+                            <p>{c.Comentario}</p>
+                          </div>
+                        </li>
+                      ))}
                     </ul>
-                    <div id="respond" className="comment-respond">
-                      <h3>Deja un Comentario</h3>
-                      <form method="post" id="commentform" className="comment-form">
-                        <div className="row col-md-12">
-                          <div className="col-md-12">
-                            <textarea
-                              className="textarea-comment col-12"
-                              placeholder="Comentario"
-                            />
+                    {canComentar ? (
+                      <div id="respond" className="comment-respond">
+                        <h3>Deja un Comentario</h3>
+                        <form method="post" id="commentform" className="comment-form">
+                          <div className="row col-md-12">
+                            <div className="col-md-12">
+                              <textarea
+                                onChange={onHandleComment}
+                                className="textarea-comment col-12"
+                                placeholder="Comentario"
+                                value={comentario.Comentario}
+                              />
+                            </div>
+                            <div className="col-md-12">
+                              <button
+                                type="button"
+                                onClick={onSubmitComment}
+                                className="btn btn-default btn-block"
+                              >
+                                Enviar Comentario
+                              </button>
+                            </div>
                           </div>
-                          <div className="col-md-12">
-                            <button type="button" className="btn btn-default btn-block">
-                              Enviar Comentario
-                            </button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
+                        </form>
+                      </div>
+                    ) : (
+                      <div> </div>
+                    )}
                   </div>
                 </div>
               </div>

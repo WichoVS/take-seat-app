@@ -49,12 +49,8 @@ export default function ReservacionesComponent() {
   };
 
   const DateToFecha = (date) => {
-    const _date = new Date(date);
-    const _dia = _date.getDay();
-    const _mes = _date.getMonth();
-    const _year = _date.getFullYear();
-
-    return `${_dia}/${_mes}/${_year}`;
+    const _date = new Date(date).toLocaleDateString();
+    return _date;
   };
 
   return (
