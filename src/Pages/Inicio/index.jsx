@@ -38,7 +38,8 @@ function Inicio() {
   return (
     <div className="body">
       <div className="main-wrapper">
-        <Header />
+        {usuariolog !== null ? <Header /> : ''}
+
         <div className="home">
           <div className="tittle-block">
             <div className="logo">
