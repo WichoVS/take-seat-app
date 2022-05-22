@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
-const urlBase = 'http://localhost:5000/api/v1';
+const urlBase = 'https://takeseatapi.onrender.com/api/v1';
 // eslint-disable-next-line max-len
-const tkn = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNGU0ZDhmMWUyOWMyZDY2NTljY2E2MiIsImlhdCI6MTY1MTg2MzA3MiwiZXhwIjoxNjYwNTAzMDcyfQ.HZBCFWSvK_5Z9jnx9J8TvODB7_WXzdPGqUCuUGcoeNw`;
+const tkn = JSON.parse(localStorage.getItem('tkn'));
 
 const headers = {
   Authorization: `Bearer ${tkn}`,

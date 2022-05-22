@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 
-const urlBase = 'http://localhost:5000';
+const urlBase = 'https://takeseatapi.onrender.com';
 
 const IniciarSesion = async (usuario, password) => {
   const { data: resp } = await axios.post(`${urlBase}/iniciarSesion`, {
@@ -15,13 +15,18 @@ const IniciarSesion = async (usuario, password) => {
   return true;
 };
 
-const RegistroUsuario = async (nombre, correo, usuario, password) => {
+const CerrarSesion = async () => {
+  localStorage.removeItem('user');
+  localStorage.removeItem('tkn');
+};
+
+const RegistroUsuario = async (nombre, correo, usuario, password, imagen) => {
   const { data: resp } = await axios.post(`${urlBase}/registrarUsuario`, {
     _id: null,
     Nombre: nombre,
     Usuario: usuario,
     Correo: correo,
-    Imagen: 'https://cdn.fakercloud.com/avatars/ntfblog_128.jpg',
+    Imagen: imagen,
     Pais: null,
     Estado: null,
     Ciudad: null,
@@ -63,4 +68,4 @@ const GetUsuarioRestaurante = async () => {
   return resp;
 };
 
-export { IniciarSesion, RegistroUsuario, GetUsuario, GetUsuarioRestaurante };
+export { IniciarSesion, RegistroUsuario, GetUsuario, GetUsuarioRestaurante, CerrarSesion };

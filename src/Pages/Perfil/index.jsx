@@ -1,8 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { GetUsuario, GetUsuarioRestaurante } from '../../Services/Usuarios/usuarios';
+import { CerrarSesion, GetUsuario, GetUsuarioRestaurante } from '../../Services/Usuarios/usuarios';
 import NavBarra from '../../Layouts/Header/NavBar';
 import FooterBarra from '../../Layouts/Footer/Footer';
 
@@ -41,6 +42,11 @@ export default function Perfil() {
     };
   };
 
+  const cerrarSesion = async () => {
+    await CerrarSesion();
+    navigate('/');
+  };
+
   useEffect(async () => {
     const { success, message, data } = await GetUsuario();
     if (success) {
@@ -66,6 +72,13 @@ export default function Perfil() {
   };
 
   const onSave = () => {};
+
+  if (usuario._id === '')
+    return (
+      <div className="col-10 d-flex justify-content-center">
+        <h5>Cargando...</h5>
+      </div>
+    );
 
   return (
     <div className="body">
@@ -167,8 +180,12 @@ export default function Perfil() {
                               </button>
                             </div>
                             <div className="col-md-3">
-                              <button type="button" className="btn btn-default pull-right">
-                                Eliminar cuenta
+                              <button
+                                type="button"
+                                onClick={cerrarSesion}
+                                className="btn btn-default pull-right"
+                              >
+                                Cerrar Sesión
                               </button>
                             </div>
                             {restaurant ? (

@@ -27,6 +27,20 @@ export default function Registro() {
     });
   };
 
+  const onImageHandler = (e) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setUserReg({
+        ...userReg,
+        imagen: reader.result,
+      });
+    };
+    reader.onerror = (error) => {
+      console.log(error);
+    };
+  };
+
   return (
     <div className="body">
       <NavBarra />
@@ -121,7 +135,7 @@ export default function Registro() {
                           <div className="form-group">
                             <span>Fotografía</span>
                             <input
-                              onChange={handleUser}
+                              onChange={onImageHandler}
                               name="imagen"
                               type="file"
                               className="form-control"
@@ -140,6 +154,7 @@ export default function Registro() {
                                     userReg.correo,
                                     userReg.usuario,
                                     userReg.password,
+                                    userReg.imagen,
                                   )
                                 ) {
                                   navigate('/');

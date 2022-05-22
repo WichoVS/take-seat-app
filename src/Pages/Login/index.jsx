@@ -12,6 +12,13 @@ export default function Login() {
   const [pass, setPass] = useState('');
   const navigate = useNavigate();
 
+  const onLogin = async () => {
+    const val = await IniciarSesion(correo, pass);
+    if (val) {
+      navigate('/');
+    }
+  };
+
   return (
     <div className="body">
       <NavBarra />
@@ -72,11 +79,7 @@ export default function Login() {
                         <div className="row">
                           <div className="col-md-12">
                             <button
-                              onClick={() => {
-                                if (IniciarSesion(correo, pass)) {
-                                  navigate('/');
-                                }
-                              }}
+                              onClick={onLogin}
                               type="button"
                               className="btn btn-default pull-right"
                             >
